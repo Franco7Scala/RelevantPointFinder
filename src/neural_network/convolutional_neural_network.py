@@ -1,4 +1,3 @@
-import numpy
 import torch.nn as nn
 
 from neural_network.abstract_neural_network import AbstractNeuralNetwork
@@ -42,7 +41,6 @@ class ConvolutionalNeuralNetwork(AbstractNeuralNetwork):
             nn.Dropout(p=0.1),
             nn.Linear(512, 1)
         )
-        self.device = device
         self.to(device)
 
     def forward(self, x):

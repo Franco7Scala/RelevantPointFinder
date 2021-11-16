@@ -1,4 +1,81 @@
-import torch
+import torch as torch
+
+from src.neural_network.combined_neural_network import CombinedNeuralNetwork
+from src.dataset import loader
+
+
+# config
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
+# load dataset
+train_set, test_set = loader.get_dataset()
+
+# create networks
+comb_nn = CombinedNeuralNetwork(device)
+
+# load training
+comb_nn.train(train_set, test_set)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''import torch
 import numpy
 
 from arff2pandas import a2p
@@ -36,4 +113,4 @@ def create_dataset(data_frame):
 train_dataset, sequences_length, quantity_features = create_dataset(train_data_frame)
 val_dataset, _, _ = create_dataset(val_data_frame)
 test_normal_dataset, _, _ = create_dataset(test_df)
-test_anomaly_dataset, _, _ = create_dataset(anomaly_df)
+test_anomaly_dataset, _, _ = create_dataset(anomaly_df)'''
