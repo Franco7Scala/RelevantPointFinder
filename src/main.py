@@ -3,18 +3,21 @@ import torch as torch
 from src.neural_network.combined_neural_network import CombinedNeuralNetwork
 from src.dataset import loader
 
+# params
+batch_size = 10
+training_epochs = 3
 
 # config
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # load dataset
-train_set, test_set = loader.get_dataset()
+dataloader = loader.get_dataloader(batch_size)
 
 # create networks
 comb_nn = CombinedNeuralNetwork(device)
 
 # load training
-comb_nn.train(train_set, test_set)
+comb_nn.fit(dataloader, training_epochs)
 
 
 

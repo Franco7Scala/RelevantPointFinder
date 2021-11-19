@@ -8,9 +8,10 @@ from src.neural_network.lstm import LSTM
 class CombinedNeuralNetwork(AbstractNeuralNetwork):
 
     def __init__(self, device):
-        super(CombinedNeuralNetwork, self).__init__()
+        super(CombinedNeuralNetwork, self).__init__(device)
         self.lstm = LSTM(device)
         self.cnn = ConvolutionalNeuralNetwork(device)
+        self.to(device)
 
     def forward(self, x):
         x = self.lstm(x)
@@ -25,6 +26,8 @@ class CombinedNeuralNetwork(AbstractNeuralNetwork):
 
     def load_lstm(self, path):
         self.lstm = torch.load(path, map_location=torch.device('cpu'))
+        return self.lstm
 
     def load_cnn(self, path):
         self.cnn = torch.load(path, map_location=torch.device('cpu'))
+        return self.cnn
