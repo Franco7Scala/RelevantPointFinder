@@ -1,6 +1,4 @@
 import os
-import torch
-import torch.utils.data as data_utils
 
 from arff2pandas import a2p
 from torch.utils.data.dataloader import DataLoader
@@ -18,6 +16,10 @@ def get_dataset():
     return train, test
 
 
+def get_classes():
+    return ["Normal", "R on T", "PVC", "SP", "UB"]
+
+
 def get_dataloader(batch_size, train=True):
     dataset = ECGDataset(ref_file='training2017/REFERENCE.csv', data_dir='training2017')
     train_size = int(0.7 * len(dataset))
@@ -27,7 +29,3 @@ def get_dataloader(batch_size, train=True):
 
     else:
         return DataLoader(val_set, batch_size=batch_size, shuffle=True, num_workers=4)
-
-
-def get_classes():
-    return ["Normal", "R on T", "PVC", "SP", "UB"]

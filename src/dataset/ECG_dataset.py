@@ -7,6 +7,7 @@ import pandas
 
 from torch.utils.data import Dataset
 
+#TODO usare generatore da riscrivere la classe
 
 class ECGDataset(Dataset):
 
