@@ -14,8 +14,8 @@ class CombinedNeuralNetwork(AbstractNeuralNetwork):
         self.to(device)
 
     def forward(self, x):
-        x = self.lstm(x)
         x = self.cnn(x)
+        x = self.lstm(x)
         return x
 
     def save_lstm(self, path):
@@ -25,9 +25,9 @@ class CombinedNeuralNetwork(AbstractNeuralNetwork):
         torch.save(self.cnn.state_dict(), path)
 
     def load_lstm(self, path):
-        self.lstm = torch.load(path, map_location=torch.device('cpu'))
+        self.lstm = torch.load(path, map_location=torch.device("cpu"))
         return self.lstm
 
     def load_cnn(self, path):
-        self.cnn = torch.load(path, map_location=torch.device('cpu'))
+        self.cnn = torch.load(path, map_location=torch.device("cpu"))
         return self.cnn

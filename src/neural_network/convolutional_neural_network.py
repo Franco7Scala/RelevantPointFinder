@@ -34,7 +34,7 @@ class ConvolutionalNeuralNetwork(AbstractNeuralNetwork):
 
         layers.append(View((-1, 9, 224)))
         layers.append(LambdaLayer(lambda x: torch.mean(x, axis=1)))
-        layers.append(nn.Linear(224, 4))
+        layers.append(nn.Linear(224, 1))
         self.net = nn.Sequential(*layers)
         self.to(device)
 
