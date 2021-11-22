@@ -3,8 +3,9 @@ import torch.nn as nn
 
 from torch.optim.adam import Adam
 from src.neural_network.abstract_neural_network import AbstractNeuralNetwork
-from src.neural_network.layers.Conv2dBlock import Conv2dBlock
+from src.neural_network.layers.conv_2d_block import Conv2dBlock
 from src.neural_network.layers.lambda_layer import LambdaLayer
+from src.neural_network.layers.view_layer import View
 
 
 class ConvolutionalNeuralNetwork(AbstractNeuralNetwork):
@@ -68,7 +69,7 @@ class ConvolutionalNeuralNetwork(AbstractNeuralNetwork):
 
             train_loss.append(train_running_loss / len(train_dataloader.dataset.indices))
             train_acc.append(train_correct.float().item() / len(train_dataloader.dataset.indices))
-            # train
+            # evaluate
             with torch.no_grad():
                 self.eval()
                 for i, data in enumerate(test_dataloader):

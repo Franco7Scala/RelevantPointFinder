@@ -4,8 +4,7 @@ from torch import nn
 
 
 class Conv2dBlock(nn.Module):
-    def __init__(self, depth, layer_filters, filters_growth,
-                 strides_start, strides_end, input_shape, first_layer=False):
+    def __init__(self, depth, layer_filters, filters_growth, strides_start, strides_end, input_shape, first_layer=False):
         super(Conv2dBlock, self).__init__()
         layers = []
         c_in_channels = layer_filters
