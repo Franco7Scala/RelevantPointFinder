@@ -26,6 +26,7 @@ class ConvolutionalNeuralNetwork(AbstractNeuralNetwork):
         for block in range(n_blocks):
             if block == 0:
                 provide_input = True
+
             else:
                 provide_input = False
 
